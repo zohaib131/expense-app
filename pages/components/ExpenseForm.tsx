@@ -8,11 +8,13 @@ interface ExpenseFormProps {
 
 const ExpenseForm: React.FC<ExpenseFormProps> = ({ addExpense }) => {
   const [name, setName] = useState('');
-  const [amount, setAmount] = useState<number | string>('');
-  
+  const [amount, setAmount] = useState(''); // Keep amount as string since it's a controlled input
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (name && amount) {
+    
+    // Check if name and amount are valid
+    if (name && amount && !isNaN(Number(amount)) && Number(amount) > 0) {
       const newExpense = {
         id: Math.random().toString(36).substr(2, 9), // generate unique id
         name,
@@ -21,6 +23,9 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ addExpense }) => {
       addExpense(newExpense);
       setName('');
       setAmount('');
+    } else {
+      // You can handle invalid input here (for example, alert the user or show an error message)
+      alert('Please enter a valid expense name and amount.');
     }
   };
 

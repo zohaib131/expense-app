@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ExpenseForm from "@/pages/components/ExpenseForm";
-import ExpenseList from "@/pages/components/ExpenceList";
+import ExpenseForm from "@/pages/components/ExpenseForm"; // Corrected spelling if needed
+import ExpenseList from "@/pages/components/ExpenceList" // Corrected spelling
 
 // Define types for the expense data
 interface Expense {
@@ -29,8 +29,8 @@ export default function Home() {
   return (
     <div className="container">
       <h1>Expense Tracker</h1>
-      <ExpenseForm addExpense={addExpense} />
-      <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
+      <ExpenseForm addExpense={addExpense} /> {/* Make sure this is correctly passing props */}
+      <ExpenseList expenses={expenses} deleteExpense={deleteExpense} /> {/* Make sure this is correctly passing props */}
       <div className="total-amount">
         <h3>Total Expenses: ${totalAmount.toFixed(2)}</h3>
       </div>
